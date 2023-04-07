@@ -1,0 +1,38 @@
+@use "./colors" as c;
+@use "./fonts" as t;
+
+.main__addBtn-wrapper,
+.addBtn-wrapper {
+  width: 100vw;
+  height: 13vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  margin-bottom: 1vw;
+
+  &__addBtn,
+  .addBtn {
+    text-align: center;
+    width: 30px;
+    height: 30px;
+
+    text-align: center;
+    background-color: c.$one;
+    margin-bottom: 5vw;
+    margin-top: 1vw;
+
+    border: none;
+
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5vw;
+
+    &__plus {
+      font: t.$descriptions-font;
+      color: c.$two;
+    }
+  }
+}

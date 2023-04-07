@@ -1,0 +1,59 @@
+@use "./colors" as c;
+@use "./fonts" as t;
+
+.main__food-component-wrapper,
+.food-component-wrapper {
+  margin: 0 0 0.4vw 0;
+  width: 100vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: row;
+  &__background-Rectangle,
+  .background-Rectangle {
+    background-color: c.$one;
+    width: 100vw;
+    height: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 1vw;
+    display: flex;
+    flex-direction: row;
+
+    &__innerText-wrapper,
+    .innerText-wrapper {
+      margin: 6vw 0 6vw 0;
+      width: 100vw;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+      &__innerLine {
+        width: 50vw;
+        height: 0.2vh;
+        // border-radius: 50vw;
+        background-color: c.$two;
+        opacity: 0.4;
+        // margin-left: 10vw;
+      }
+      &__text {
+        width: 50vw;
+        border: none;
+        // margin-left: 10vw;
+        background-color: c.$one;
+        font: t.$descriptions-font;
+        text-align: center;
+      }
+    }
+    &__pictogram-wrapper,
+    .pictogram-wrapper {
+      width: 80vw;
+      display: none;
+      &__pictogram {
+        margin: 1vw 10vw 1vw 2vw;
+        width: 15vw;
+      }
+    }
+  }
+}

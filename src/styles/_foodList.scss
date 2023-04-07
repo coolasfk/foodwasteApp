@@ -1,0 +1,24 @@
+@use "./colors" as c;
+@use "./fonts" as t;
+
+.main__foodList-wrapper,
+.foodList-wrapper {
+  background-color: c.$one;
+  &__headline-wrapper,
+  .headline-wrapper {
+    display: flex;
+    width: 100vw;
+ 
+    justify-content: center;
+
+    &__headline {
+      font: t.$descriptions-font;
+      font: t.$one;
+      color: c.$two;
+      size: 1.5rem;
+    }
+  }
+  &__foodList {
+    display: flex;
+  }
+}

@@ -1,0 +1,56 @@
+@use "./styles/colors" as c;
+@use "./styles/fonts" as t;
+@import url(./styles/_foodComponent.scss);
+@import url(./styles/_btnAddFood.scss);
+@import url(./styles/_foodList.scss);
+
+header {
+  &__logo-wrapper,
+  .logo-wrapper {
+    width: 100vw;
+    height: 15vh;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+    background-color: c.$one;
+
+    &__logo {
+      width: 50vw;
+    }
+  }
+}
+
+.main {
+  background-color: c.$three;
+  width: 100vw;
+  min-height: 85vh;
+
+  &__title-wrapper,
+  .title-wrapper {
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    flex-direction: column;
+
+    &__title {
+      width: 80vw;
+      font: t.$one;
+      color: c.$one;
+
+      text-align: center;
+    }
+  }
+}
+// .footer {
+//   background-color: c.$two;
+//   width: 100vw;
+//   height: 10vh;
+// }
+
+.flex {
+  display: flex;
+}

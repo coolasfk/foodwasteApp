@@ -1,0 +1,29 @@
+@use "./colors" as c;
+@use "./fonts" as t;
+
+.main__chooseListBtn-wrapper,
+.chooseListBtn-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 20vw;
+  background-color: bisque;
+
+  &__shoppingListBtn {
+    width: 50vw;
+    background-color: c.$two;
+    color: c.$one;
+    // border: 1vw solid c.$two;
+    font: t.$descriptions-font;
+    border: none;
+    border-bottom: c.$two 0.3vw solid;
+  }
+  &__foodListBtn {
+    width: 50vw;
+    background-color: c.$one;
+    // border: 1vw solid c.$two;
+    border: none;
+    font: t.$descriptions-font;
+    color: c.$two;
+    border-bottom: c.$two 0.3vw solid;
+  }
+}

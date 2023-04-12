@@ -1,9 +1,7 @@
-import { useState } from "react";
-
 import FoodComponentPictogram from "./FoodComponentPictogram";
 import React from "react";
 
-const FoodListComponent = (props) => {
+const ShoppingListComponent = (props) => {
   return (
     <div className="foodList-wrapper__foodList foodlist">
       <div className="foodlist__foodListElements-wrapper foodListElements-wrapper">
@@ -17,4 +15,4 @@ const FoodListComponent = (props) => {
   );
 };
 
-export default FoodListComponent;
+export default ShoppingListComponent;

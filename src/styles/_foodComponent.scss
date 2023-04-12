@@ -11,7 +11,7 @@
   flex-direction: row;
   &__background-Rectangle,
   .background-Rectangle {
-    background-color: c.$one;
+    background-color: c.$three;
     width: 100vw;
     height: auto;
     display: flex;
@@ -20,40 +20,71 @@
     border-radius: 1vw;
     display: flex;
     flex-direction: row;
-
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    &__FoodListpictogram {
+      width: 10vw;
+      height: 5vw;
+      position: absolute;
+      border: 4px red solid;
+    }
     &__innerText-wrapper,
     .innerText-wrapper {
-      margin: 6vw 0 6vw 0;
-      width: 100vw;
+      margin: 9vw 0 9vw 0;
+      width: 65vw;
+
       display: flex;
-      align-items: center;
-      justify-content: center;
+      align-items: left;
+      justify-content: left;
       flex-direction: column;
+
+      background-color: c.$three;
       &__innerLine {
-        width: 50vw;
+        width: 60vw;
         height: 0.2vh;
-        // border-radius: 50vw;
-        background-color: c.$two;
+
         opacity: 0.4;
-        // margin-left: 10vw;
+        border-bottom: c.$one 1vw dotted;
       }
       &__text {
-        width: 50vw;
+        width: 60vw;
         border: none;
-        // margin-left: 10vw;
-        background-color: c.$one;
+
+        background-color: transparent;
         font: t.$descriptions-font;
-        text-align: center;
+        text-align: left;
       }
     }
-    &__pictogram-wrapper,
-    .pictogram-wrapper {
-      width: 80vw;
-      display: none;
-      &__pictogram {
-        margin: 1vw 10vw 1vw 2vw;
-        width: 15vw;
+    &__btn,
+    .btn {
+      text-align: center;
+      width: 25px;
+      height: 25px;
+
+      background-color: c.$one;
+      // margin-right: 12vw;
+      // margin-left: 2vw;
+
+      border: none;
+      display: flex;
+      font-weight: bold;
+
+      align-items: center;
+      justify-content: center;
+      border-radius: 5vw;
+
+      &__plus {
+        font: t.$descriptions-font;
+        color: c.$two;
       }
+    }
+    &__pictogram {
+      // margin: 1vw 10vw 1vw 2vw;
+      width: 8vw;
+      position: absolute;
+      transform: translateX(15vw);
+      margin-bottom: 2vw;
     }
   }
 }

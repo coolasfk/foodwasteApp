@@ -1,4 +1,3 @@
-import { v4 as uuidv4 } from "uuid";
 import InputFoodComponent from "./InputFoodComponent";
 import React, { useRef } from "react";
 import { useState } from "react";
@@ -9,8 +8,7 @@ const BtnAddFood = (props) => {
   // const addFood = () => {
   //   setComponent(<InputFoodComponent key={uuidv4()} />);
   // };
-
-  console.log(props);
+  // console.log("btnAddFood", props);
   const [isClicked, setIsClicked] = useState(false);
 
   const addFood = () => {

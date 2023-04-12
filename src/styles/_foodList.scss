@@ -3,22 +3,60 @@
 
 .main__foodList-wrapper,
 .foodList-wrapper {
+  display: flex;
+  flex-direction: column;
   background-color: c.$one;
   &__headline-wrapper,
   .headline-wrapper {
     display: flex;
     width: 100vw;
- 
+    height: auto;
     justify-content: center;
-
+    border-bottom: 3px c.$four solid;
+    border-bottom: c.$two 0.3vw solid;
     &__headline {
-      font: t.$descriptions-font;
-      font: t.$one;
       color: c.$two;
-      size: 1.5rem;
+      color: rgb(110, 97, 77);
+      color: c.$four;
+
+      font: t.$two;
+      margin: 10vw 15vw 10vw 15vw;
+      text-align: center;
     }
   }
-  &__foodList {
+  &__foodList,
+  .foodlist {
     display: flex;
+    flex-direction: column;
+    display: flex;
+    &__foodListElements-wrapper,
+    .foodListElements-wrapper {
+      display: flex;
+      flex-direction: row;
+      width: 100vw;
+      border-bottom: c.$two 0.3vw solid;
+      justify-content: center;
+      align-items: center;
+      background-color: c.$one;
+      text-align: center;
+      height: 20vw;
+
+      &__text {
+        display: flex;
+
+        width: auto !important;
+        border: none;
+
+        transform: translateX(-width/2);
+        color: c.$two;
+        font: t.$descriptions-font;
+        // text-align: center;
+      }
+      &__pictogram {
+        width: auto !important;
+        height: 10vw;
+        margin-left: 5vw;
+      }
+    }
   }
 }

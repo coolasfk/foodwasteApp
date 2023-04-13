@@ -6,7 +6,6 @@ export const initialState = { data: [] };
 // let obj =[{name:'cheese',img:""}]
 // action przekazuje argumenty
 export const reducer = (state, action) => {
-  console.log("this is state from REDUCER", state);
   switch (action.type) {
     case "addFood":
       return {

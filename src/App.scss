@@ -4,32 +4,10 @@
 @import url(./styles/_btnAddFood.scss);
 @import url(./styles/_foodList.scss);
 @import url(./styles/_chooseListBtn.scss);
-
-header {
-  &__logo-wrapper,
-  .logo-wrapper {
-    width: 100vw;
-    height: 15vh;
-
-    display: flex;
-    align-items: center;
-
-    justify-content: center;
-    background-color: c.$one;
-
-    &__logo {
-      width: 50vw;
-      margin: 5vw 20vw 5vw 20vw;
-    }
-  }
-}
+@import url(./styles/_header.scss);
 
 .main {
   background-color: c.$three;
   width: 100vw;
   min-height: 85vh;
-}
-
-.flex {
-  display: flex;
 }

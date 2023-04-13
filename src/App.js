@@ -3,6 +3,7 @@ import "./index.scss";
 import "./App.scss";
 import ZeroFoodwasteLogo from "./components/ZeroFoodwasteLogo";
 import InputFoodComponent from "./components/InputFoodComponent";
+import MenuTop from "./components/MenuTop";
 
 import { useState } from "react";
 import useGlobalReducer from "./components/useGlobalReducer";
@@ -16,6 +17,7 @@ function App() {
   return (
     <>
       <header className="header">
+        <MenuTop />
         <ZeroFoodwasteLogo />
       </header>
       <main className="main">

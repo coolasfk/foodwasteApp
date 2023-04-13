@@ -5,37 +5,23 @@ import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import InputPictogram from "./InputPictogram";
 import FoodListComponent from "./FoodListComponent";
+import FoodListList from "./FoodListList";
+import GroceryListList from "./GroceryListList";
 const InputFoodComponent = (props) => {
   const [state, dispatch] = useGlobalReducer();
-  const [components, setComponents] = useState([]);
+  const [componentsGrocery, setComponentsGrocery] = useState([]);
+  const [componentsList, setComponentsList] = useState([]);
   const [isGroceryBtnClicked, setIsGroceryBtnClicked] = useState(true);
   const [isFoodListBtnClicked, setIsFoodListBtnClicked] = useState(false);
   const [listHeadlines, setListHeadlines] = useState("grocery list");
   const [btnGroceryStyle, setBtnGroceryStyle] = useState("");
   const [btnFoodStyle, setBtnFoodStyle] = useState("");
+  const [isBtnClicked, setIsBtnClicked] = useState(false);
 
   const [foodtext, setFoodtext] = useState("");
 
-  console.log("this is state from input", state);
   const setFoodtextHandler = (e) => {
     setFoodtext(e.target.value);
-  };
-  const [inputForFoodList, setInputForFoodList] = useState([]);
-
-  const updateFoodList = () => {
-    dispatch({ type: "addFood", foodtext: foodtext });
-
-    setInputForFoodList({ foodtext });
-    setComponents((...components) => [
-      ...components,
-      <FoodListComponent
-        foodtext={foodtext}
-        key={uuidv4()}
-        {...props}
-        inputForFoodList={foodtext}
-      />,
-    ]);
-    setFoodtext("");
   };
 
   const moveToGroceryList = (e) => {
@@ -46,13 +32,54 @@ const InputFoodComponent = (props) => {
     setBtnFoodStyle("rgba(228, 234, 228, 1)");
   };
   const moveToFoodList = (e) => {
-    console.log("this is e", e);
     setIsFoodListBtnClicked(true);
     setIsGroceryBtnClicked(false);
     setListHeadlines("food list");
     setBtnFoodStyle("rgba(83, 105, 74, 1)");
     setBtnGroceryStyle("rgba(228, 234, 228, 1)");
   };
+
+  const updateLists = () => {
+    dispatch({ type: "addFood", foodtext: foodtext });
+
+    if (isGroceryBtnClicked === true) {
+      setComponentsGrocery((...componentsGrocery) => [
+        ...componentsGrocery,
+        <FoodListComponent
+          foodtext={foodtext}
+          key={uuidv4()}
+          {...props}
+          inputForFoodList={foodtext}
+        />,
+      ]);
+    }
+
+    if (isFoodListBtnClicked === true) {
+      setComponentsList((...componentsList) => [
+        ...componentsList,
+        <FoodListComponent
+          foodtext={foodtext}
+          key={uuidv4()}
+          {...props}
+          inputForFoodList={foodtext}
+        />,
+      ]);
+    }
+
+    setFoodtext("");
+  };
+
+  const updateFoodList = () => {
+    setComponentsList((...componentsList) => [
+      ...componentsList,
+      ...componentsGrocery,
+    ]);
+  };
+
+  const clearGroceryList = () => {
+    setComponentsGrocery([]);
+  };
+
   return (
     <>
       <div className="main__food-component-wrapper food-component-wrapper">
@@ -64,14 +91,16 @@ const InputFoodComponent = (props) => {
               placeholder="add food to your list"
               autoComplete="on"
               value={foodtext}
+              required
             />
 
             <div className="innerText-wrapper__innerLine"></div>
           </div>{" "}
           <InputPictogram foodtext={foodtext}></InputPictogram>
           <button
+            type="submit"
             className="background-Rectangle__btn btn"
-            onClick={updateFoodList}
+            onClick={updateLists}
           >
             <h3 className="btn__plus">+</h3>
           </button>
@@ -94,7 +123,47 @@ const InputFoodComponent = (props) => {
         </button>
       </div>
       <YourFoodListTop listHeadlines={listHeadlines} />
-      {components}
+      {/* {components} */}
+      {isFoodListBtnClicked ? (
+        <FoodListList
+          isBtnClicked={isBtnClicked}
+          updateFoodList={updateFoodList}
+          setFoodtextHandler={setFoodtextHandler}
+          foodtext={foodtext}
+          key={uuidv4()}
+          {...props}
+          inputForFoodList={foodtext}
+          componentsList={componentsList}
+        />
+      ) : null}
+      {isGroceryBtnClicked ? (
+        <GroceryListList
+          isBtnClicked={isBtnClicked}
+          updateFoodList={updateFoodList}
+          setFoodtextHandler={setFoodtextHandler}
+          foodtext={foodtext}
+          key={uuidv4()}
+          {...props}
+          inputForFoodList={foodtext}
+          componentsGrocery={componentsGrocery}
+        />
+      ) : null}
+      {isGroceryBtnClicked ? (
+        <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
+          <button
+            className="handleListBtns-wrapper__btnAddToGroceryList"
+            onClick={updateFoodList}
+          >
+            !!!add entire grocery list to the food list
+          </button>
+          <button
+            className="handleListBtns-wrapper__clearGroceryList"
+            onClick={clearGroceryList}
+          >
+            clear the grocery list
+          </button>
+        </div>
+      ) : null}
     </>
   );
 };

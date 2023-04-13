@@ -1,0 +1,54 @@
+@use "./colors" as c;
+@use "./fonts" as t;
+
+header {
+  &__menu-wrapper,
+  .menu-wrapper {
+    width: 100vw;
+    height: 20vw;
+    height: auto;
+    background-color: c.$two;
+    // background-color: rgb(174, 140, 53);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &__menu,
+    .menu {
+      width: 15vw;
+
+      color: c.$one;
+      margin: 2vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-direction: column;
+
+      cursor: pointer;
+      &__menu-rectangle {
+        width: 12vw;
+        height: 0.28rem;
+        margin: 0.18rem;
+
+        background-color: c.$three;
+        border-radius: 1rem;
+      }
+    }
+  }
+  &__logo-wrapper,
+  .logo-wrapper {
+    width: 100vw;
+    height: 15vh;
+
+    display: flex;
+    align-items: center;
+
+    justify-content: center;
+    background-color: c.$one;
+
+    &__logo {
+      width: 50vw;
+      margin: 5vw 20vw 5vw 20vw;
+    }
+  }
+}

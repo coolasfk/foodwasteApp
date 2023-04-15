@@ -1,0 +1,85 @@
+@use "./colors" as c;
+@use "./fonts" as t;
+
+.main__handleListBtns-wrapper,
+.handleListBtns-wrapper {
+  display: flex;
+  width: 100vw;
+  height: 40vw;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  &__btnAddToGroceryList {
+    width: 100vw;
+
+    height: 20vw;
+    // border: 1vw solid c.$two;
+    border: none;
+    font: t.$descriptions-font;
+    background-color: c.$three;
+    color: c.$two;
+    border-bottom: c.$three 0.3vw solid;
+
+    border-right: c.$three 0.3vw solid;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &__clearGroceryList,
+  .clearGroceryList {
+    width: 100vw;
+    height: 20vw;
+    // background-color: c.$one;
+    // border: 1vw solid c.$two;
+    border: none;
+    font: t.$descriptions-font;
+    color: c.$two;
+
+    border-bottom: c.$one 0.3vw solid;
+    border-top: c.$one 0.3vw solid;
+    display: flex;
+    flex-direction: row;
+    cursor: pointer;
+    align-items: center;
+    justify-content: center;
+    background-color: c.$three;
+    &__circle-wrapper,
+    .circle-wrapper {
+      display: flex;
+      flex-direction: row;
+
+      &__circle,
+      .circle {
+        text-align: center;
+        width: 30px;
+        height: 30px;
+
+        text-align: center;
+        background-color: c.$one;
+
+        border: none;
+
+        font-weight: bold;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5vw;
+        margin-left: 5vw;
+
+        &__cross {
+          transform: rotate(45deg);
+          font: t.$descriptions-font;
+          color: c.$two;
+          transform: translateY(0.1vw) translateX(-0.1vw) rotate(45deg);
+        }
+        &__plus {
+          font: t.$descriptions-font;
+          color: c.$two;
+          transform: translateY(0.1vw) translateX(-0.1vw);
+        }
+      }
+    }
+  }
+}

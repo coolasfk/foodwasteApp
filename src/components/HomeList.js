@@ -1,9 +1,10 @@
 import FoodListComponent from "./FoodListComponent";
-import { useEffect, useState } from "react";
+
 import { v4 as uuidv4 } from "uuid";
 
-const FoodListList = (props) => {
-  const [components, setComponents] = useState([]);
+const HomeList = (props) => {
+  console.log("HomeList props:", props);
+  // const [components, setComponents] = useState([]);
 
   //   setComponents((...components) => [
   //     ...components,
@@ -23,9 +24,20 @@ const FoodListList = (props) => {
 
   return (
     <>
-      <div>{props.componentsList}</div>
+      {/* <div>{props.componentsList}</div> */}
+
+      {props.dataHome.map((obj) => (
+        // <FoodListComponent foodtext={obj.foodtext} key={obj.key} />
+        <FoodListComponent
+          foodtext={obj.foodtext}
+          // key={obj.key}
+          // key={obj.id}
+          key={uuidv4()}
+          // {...props}
+        />
+      ))}
     </>
   );
 };
 
-export default FoodListList;
+export default HomeList;

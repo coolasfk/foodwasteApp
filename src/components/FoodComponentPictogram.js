@@ -2,16 +2,8 @@ import { ReactComponent as CheeseIcon } from "../assets/foodPictograms/cheese.sv
 
 const FoodComponentPictogram = (props) => {
   return (
-    // <div className="foodList-wrapper__foodList">
-    //   <div className="foodlist__foodListElements-wrapper foodListElements-wrapper">
-    //     {props.inputForFoodList === "cheese" ? (
-    //       <CheeseIcon className="foodListElements-wrapper__pictogram" />
-    //     ) : null}
-    //   </div>
-    // </div>
-
     <>
-      {props.inputForFoodList === "cheese" ? (
+      {props.foodtext === "cheese" ? (
         <CheeseIcon className="foodListElements-wrapper__pictogram" />
       ) : null}
     </>

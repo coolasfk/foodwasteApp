@@ -1,4 +1,4 @@
-const YourFoodListTop = ({ listHeadlines }) => {
+const ListTopHeadlines = ({ listHeadlines }) => {
   return (
     <div className="main__foodList-wrapper foodList-wrapper">
       <div className="foodList-wrapper__headline-wrapper headline-wrapper">
@@ -7,4 +7,4 @@ const YourFoodListTop = ({ listHeadlines }) => {
     </div>
   );
 };
-export default YourFoodListTop;
+export default ListTopHeadlines;

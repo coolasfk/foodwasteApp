@@ -1,27 +1,20 @@
-// w tym pliku mamy informacje o wpisanym jedzeniu i id [{cheese,'2312sad'},{}]
-//podasz do HomeList liste zakupow no i handlery z statea
+import { useState, useEffect } from "react";
+import ListTopHeadlines from "./ListTopHeadlines";
 
-//problem z keys
-
-import { useState } from "react";
-import YourFoodListTop from "./YourFoodListTop";
-import useGlobalReducer from "./useGlobalReducer";
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
 import InputPictogram from "./InputPictogram";
 import FoodListComponent from "./FoodListComponent";
-import HomeList from "./HomeList";
-import GroceryList from "./GroceryList";
+
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
+
 const InputFoodComponent = (props) => {
-  // const [state, dispatch] = useGlobalReducer();
-
-  const [dataGrocery, setDataGrocery] = useState([]);
-
-  const [dataHome, setDataHome] = useState([]);
+  const [dataFood, setDataFood] = useState([]);
 
   const [isGroceryBtnClicked, setIsGroceryBtnClicked] = useState(true);
-  const [isFoodListBtnClicked, setIsFoodListBtnClicked] = useState(false);
-  const [listHeadlines, setListHeadlines] = useState("grocery list");
+  const [isHomeListBtnClicked, setIsHomeListBtnClicked] = useState(false);
+  const [listHeadlines, setListHeadlines] = useState("To Buy:");
   const [btnGroceryStyle, setBtnGroceryStyle] = useState("");
   const [btnFoodStyle, setBtnFoodStyle] = useState("");
 
@@ -31,104 +24,68 @@ const InputFoodComponent = (props) => {
     setFoodtext(e.target.value);
   };
 
-  const moveToGroceryList = (e) => {
-    setIsGroceryBtnClicked(true);
-    setIsFoodListBtnClicked(false);
-    setListHeadlines("grocery list");
-    setBtnGroceryStyle("rgba(228, 234, 228, 1)");
-    setBtnFoodStyle("rgba(83, 105, 74, 1)");
-  };
-
-  const moveToFoodList = () => {
-    setIsFoodListBtnClicked(true);
-    setIsGroceryBtnClicked(false);
-    setListHeadlines("home list");
-
-    setBtnFoodStyle("rgba(228, 234, 228, 1)");
-    setBtnGroceryStyle("rgba(83, 105, 74, 1)");
-  };
-
   const updateLists = () => {
-    // dispatch({ type: "addFood", foodtext: foodtext, action: foodtext });
-    // CZY JA W OGOLE TEGO POTRZEBUJE TEGO REDUCERA
-    //   setComponentsGrocery((...componentsGrocery) => [
-    //     ...componentsGrocery,
-    //     <FoodListComponent
-    //       foodtext={foodtext}
-    //       key={uuidv4()}
-    //       {...props}
-    //       inputForFoodList={foodtext}
-    //     />,
-    //   ]);
     if (isGroceryBtnClicked === true) {
-      setDataGrocery([
-        ...dataGrocery,
+      setDataFood([
+        ...dataFood,
         {
           foodtext: foodtext,
+          category: "grocery",
           key: uuidv4(),
         },
       ]);
     }
 
-    if (isFoodListBtnClicked === true) {
-      // setComponentsList((...componentsList) => [
-      //   ...componentsList,
-      //   <FoodListComponent
-      //     foodtext={foodtext}
-      //     key={uuidv4()}
-      //     {...props}
-      //     inputForFoodList={foodtext}
-      //   />,
-      // ]);
-
-      setDataHome([
-        ...dataHome,
+    if (isHomeListBtnClicked === true) {
+      setDataFood([
+        ...dataFood,
         {
           foodtext: foodtext,
+          category: "home",
           key: uuidv4(),
         },
       ]);
     }
-    // todo wyzej
 
     setFoodtext("");
   };
 
-  const updateFoodList = () => {
-    // setComponentsList((...componentsList) => [
-    //   ...componentsList,
-    //   ...componentsGrocery,
-    // ]);
+  const updateHomeList = () => {
+    let helpState = [...dataFood];
+    helpState.forEach((el) => (el.category = "home"));
 
-    // tez analogia
-    //   setDataHome({
-    //     ...dataHome,
-    //     ...dataGrocery,
-    //   });
-    // };
-
-    setDataHome([...dataHome, ...dataGrocery]);
+    setDataFood([...helpState]);
   };
-
   const clearGroceryList = () => {
-    // setComponentsGrocery([]);
-    setDataGrocery([]);
+    setDataFood(dataFood.filter((el) => el.category !== "grocery"));
   };
 
   const updateGroceryList = () => {
-    // setComponentsGrocery((...componentsGrocery) => [
-    //   ...componentsGrocery,
-    //   ...componentsList,
-    // ]);
-
-    setDataGrocery([...dataGrocery, ...dataHome]);
-    dataHome.forEach((component, index) => (index = index + 2));
-    dataGrocery.forEach((component, index) => (index = index + 2));
+    let helpFood = [...dataFood];
+    helpFood.forEach((el) => (el.category = "grocery"));
+    setDataFood([...helpFood]);
   };
 
   const clearFoodList = () => {
-    // setComponentsList([]);
-    setDataHome([]);
+    setDataFood([]);
+  };
+
+  const displayGroceryList = () => {
+    setIsGroceryBtnClicked(true);
+    setIsHomeListBtnClicked(false);
+    setListHeadlines("To Buy:");
+
+    setBtnGroceryStyle("rgba(228, 234, 228, 1)");
+    setBtnFoodStyle("rgba(83, 105, 74, 1)");
+  };
+
+  const displayHomeList = () => {
+    setIsHomeListBtnClicked(true);
+    setIsGroceryBtnClicked(false);
+    setListHeadlines("I Have:");
+
+    setBtnFoodStyle("rgba(228, 234, 228, 1)");
+    setBtnGroceryStyle("rgba(83, 105, 74, 1)");
   };
 
   return (
@@ -159,81 +116,67 @@ const InputFoodComponent = (props) => {
       </div>
       <div className="main__chooseListBtn-wrapper chooseListBtn-wrapper">
         <button
-          onClick={moveToGroceryList}
+          onClick={displayGroceryList}
           className="chooseListBtn-wrapper__shoppingListBtn"
           style={{ backgroundColor: btnGroceryStyle, color: btnFoodStyle }}
         >
           grocery list
         </button>
         <button
-          onClick={moveToFoodList}
+          onClick={displayHomeList}
           className="chooseListBtn-wrapper__foodListBtn"
           style={{ backgroundColor: btnFoodStyle, color: btnGroceryStyle }}
         >
           home list
         </button>
       </div>
-      <YourFoodListTop listHeadlines={listHeadlines} />
+      <ListTopHeadlines listHeadlines={listHeadlines} />
 
-      {isFoodListBtnClicked ? (
-        // todo zmienic nazwe
-        <HomeList
-          // updateFoodList={updateFoodList}
-          // setFoodtextHandler={setFoodtextHandler}
-          // foodtext={foodtext}
-          // key={uuidv4()}
-          {...props}
-          // inputForFoodList={foodtext}
-          // componentsList={componentsList}
-          dataHome={dataHome}
-        />
-      ) : null}
+      {dataFood.map((obj) => {
+        if (isHomeListBtnClicked && obj.category === "home") {
+          return (
+            <FoodListComponent
+              foodtext={obj.foodtext}
+              key={obj.key}
+              id={obj.key}
+              setDataFood={setDataFood}
+              isHomeListBtnClicked={isHomeListBtnClicked}
+              dataFood={dataFood}
+              isGroceryBtnClicked={isGroceryBtnClicked}
+              category={obj.category}
+            />
+          );
+        } else if (isGroceryBtnClicked && obj.category === "grocery") {
+          return (
+            <FoodListComponent
+              foodtext={obj.foodtext}
+              key={obj.key}
+              id={obj.key}
+              setDataFood={setDataFood}
+              isHomeListBtnClicked={isHomeListBtnClicked}
+              dataFood={dataFood}
+              isGroceryBtnClicked={isGroceryBtnClicked}
+              category={obj.category}
+            />
+          );
+        } else {
+          return null;
+        }
+      })}
 
-      {/* {isFoodListBtnClicked ? (
-        // todo zmienic nazwe
-        <HomeList
-          // isBtnClicked={isBtnClicked}
-          // updateFoodList={updateFoodList}
-          // setFoodtextHandler={setFoodtextHandler}
-          foodtext={foodtext}
-          // key={uuidv4()}
-          // {...props}
-          // inputForFoodList={foodtext}
-          componentsList={componentsList} 
-          // czyli na nowo to bylaby nazwa skladnika i jego id
-        >
-          componentsList.map(obj=> {
-            <FoodListComponent nazwa={obj.nazwa} id={obj.id} />
-          })
-
-
-          
-        </HomeList>
-      ) : null} */}
-
-      {/* mozna text && */}
-      {isGroceryBtnClicked ? (
-        <GroceryList
-          // isBtnClicked={isBtnClicked}
-          // updateFoodList={updateFoodList}
-          // setFoodtextHandler={setFoodtextHandler}
-          // foodtext={foodtext}
-          // key={uuidv4()}
-          {...props}
-          // inputForFoodList={foodtext}
-          dataGrocery={dataGrocery}
-        />
-      ) : null}
       {isGroceryBtnClicked ? (
         <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
           <button
             className="handleListBtns-wrapper__btnAddToGroceryList"
-            onClick={updateFoodList}
+            onClick={updateGroceryList}
           >
-            add the list to the home list
+            move to "I have list"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">
               <div className="circle-wrapper__circle circle">
-                <div className="circle__plus">+</div>
+                <FontAwesomeIcon
+                  className="circle__plus"
+                  icon={faShareFromSquare}
+                />
               </div>
             </div>
           </button>
@@ -250,16 +193,19 @@ const InputFoodComponent = (props) => {
           </button>
         </div>
       ) : null}
-      {isFoodListBtnClicked ? (
+      {isHomeListBtnClicked ? (
         <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
           <button
             className="handleListBtns-wrapper__btnAddToGroceryList"
-            onClick={updateGroceryList}
+            onClick={updateHomeList}
           >
-            add to the grocery list
+            move to the "to buy list"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">
               <div className="circle-wrapper__circle circle">
-                <div className="circle__plus">+</div>
+                <FontAwesomeIcon
+                  className="circle__plus"
+                  icon={faShareFromSquare}
+                />
               </div>
             </div>
           </button>

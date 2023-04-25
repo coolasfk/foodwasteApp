@@ -32,7 +32,14 @@ const HomeList = (props) => {
           foodtext={obj.foodtext}
           // key={obj.key}
           // key={obj.id}
-          key={uuidv4()}
+          // key={uuidv4()}
+          key={obj.key}
+          id={obj.key}
+          origin="home"
+
+          dataHome={props.dataHome}
+          setDataHome={props.setDataHome}
+
           // {...props}
         />
       ))}

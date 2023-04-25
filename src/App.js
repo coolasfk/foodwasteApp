@@ -8,7 +8,8 @@ import MenuTop from "./components/MenuTop";
 import { useState } from "react";
 import useGlobalReducer from "./components/useGlobalReducer";
 
-import FoodList from "./components/YourFoodListTop";
+import FoodList from "./components/ListTopHeadlines";
+
 function App() {
   const [data, setData] = useState([]);
   const [state, dispatch] = useGlobalReducer();

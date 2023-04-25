@@ -1,4 +1,5 @@
 import { ReactComponent as CheeseIcon } from "../assets/foodPictograms/cheese.svg";
+import React from "react";
 
 const InputPictogram = ({ foodtext }) => {
   return (

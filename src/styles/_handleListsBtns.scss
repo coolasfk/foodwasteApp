@@ -22,7 +22,7 @@
     border-bottom: c.$three 0.3vw solid;
 
     border-right: c.$three 0.3vw solid;
-    cursor: pointer;
+
     display: flex;
     align-items: center;
     justify-content: center;
@@ -41,7 +41,7 @@
     border-top: c.$one 0.3vw solid;
     display: flex;
     flex-direction: row;
-    cursor: pointer;
+
     align-items: center;
     justify-content: center;
     background-color: c.$three;
@@ -52,13 +52,14 @@
 
       &__circle,
       .circle {
+        cursor: pointer;
         text-align: center;
         width: 30px;
         height: 30px;
 
         text-align: center;
         background-color: c.$one;
-
+        // background-color: transparent;
         border: none;
 
         font-weight: bold;
@@ -77,6 +78,8 @@
         &__plus {
           font: t.$descriptions-font;
           color: c.$two;
+          height: 1rem;
+          // background-color: transparent;
           transform: translateY(0.1vw) translateX(-0.1vw);
         }
       }

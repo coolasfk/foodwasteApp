@@ -32,6 +32,10 @@
     background-color: transparent;
     border: c.$three solid 0.3vw;
     transform: translateY(0.1vw) translateX(-0.1vw);
+    &__sign {
+      height: 1rem;
+      width: 1rem;
+    }
   }
 }
 

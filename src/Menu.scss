@@ -1,0 +1,63 @@
+@use "./styles/colors" as c;
+@use "./styles/fonts" as t;
+@import url(./styles/_foodComponent.scss);
+@import url(./styles/_btnAddFood.scss);
+@import url(./styles/_foodList.scss);
+@import url(./styles/_chooseListBtn.scss);
+@import url(./styles/_header.scss);
+@import url(./styles/_handleListsBtns.scss);
+@import url(./styles/_foodComponentsBtns.scss);
+
+.main-menu,
+.main-menu {
+  overflow-y: scroll;
+  position: relative;
+  background-color: c.$three;
+  width: 100vw;
+  min-height: 100vh;
+  display: flex;
+
+  flex-direction: column;
+
+  justify-items: center;
+  text-align: center;
+
+  &__headline {
+    margin: 7vw;
+    margin-top: 15vw;
+    font: t.$two;
+    color: c.$one;
+  }
+  &__text {
+    margin-left: 10vw;
+    margin-right: 10vw;
+    margin-bottom: 15vw;
+    font: t.$descriptions-font;
+    color: c.$two;
+  }
+  &__button {
+    position: absolute;
+    border: none;
+    color: c.$two;
+    background-color: transparent;
+    font: t.$descriptions-font;
+    font-size: 2rem;
+    margin-left: 92vw;
+    margin-top: 2vw;
+    text-decoration: none;
+  }
+}
+.gmail {
+  margin-left: 10vw;
+  margin-right: 10vw;
+  margin-bottom: 15vw;
+  font: t.$descriptions-font;
+  color: c.$two;
+  color: c.$one;
+  cursor: pointer;
+  text-decoration: underline;
+}
+.link {
+  font: t.$descriptions-font;
+  color: c.$one;
+}

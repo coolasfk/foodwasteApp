@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import ListTopHeadlines from "./ListTopHeadlines";
+import CopyToClipboard from "react-copy-to-clipboard";
 
 import { v4 as uuidv4 } from "uuid";
 import React from "react";
@@ -8,9 +9,14 @@ import FoodListComponent from "./FoodListComponent";
 
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
+import { faCopy } from "@fortawesome/free-solid-svg-icons";
 
 const InputFoodComponent = (props) => {
-  const [dataFood, setDataFood] = useState([]);
+  const [dataFood, setDataFood] = useState(() => {
+    const fetchDataFood = localStorage.getItem("dataFood");
+    const parseDataFood = JSON.parse(fetchDataFood);
+    return parseDataFood || [];
+  });
 
   const [isGroceryBtnClicked, setIsGroceryBtnClicked] = useState(true);
   const [isHomeListBtnClicked, setIsHomeListBtnClicked] = useState(false);
@@ -19,9 +25,15 @@ const InputFoodComponent = (props) => {
   const [btnFoodStyle, setBtnFoodStyle] = useState("");
 
   const [foodtext, setFoodtext] = useState("");
+  const [textColorHome, setTextColorHome] = useState("rgba(170, 188, 162, 1");
+  const [textColorGrocery, setTextColorGrocery] = useState("");
+
+  useEffect(() => {
+    localStorage.setItem("dataFood", JSON.stringify(dataFood));
+  });
 
   const setFoodtextHandler = (e) => {
-    setFoodtext(e.target.value);
+    setFoodtext(e.target.value.toLowerCase());
   };
 
   const updateLists = () => {
@@ -75,8 +87,13 @@ const InputFoodComponent = (props) => {
     setIsHomeListBtnClicked(false);
     setListHeadlines("To Buy:");
 
-    setBtnGroceryStyle("rgba(228, 234, 228, 1)");
-    setBtnFoodStyle("rgba(83, 105, 74, 1)");
+    // setBtnGroceryStyle("rgba(228, 234, 228, 1)");
+    // setBtnFoodStyle("rgba(83, 105, 74, 1)");
+
+    setTextColorHome("rgba(170, 188, 162, 1");
+    setTextColorGrocery("rgba(228, 234, 228, 1)");
+    setBtnGroceryStyle("rgba(83, 105, 74, 1)");
+    setBtnFoodStyle("rgba(228, 234, 228, 1)");
   };
 
   const displayHomeList = () => {
@@ -84,9 +101,52 @@ const InputFoodComponent = (props) => {
     setIsGroceryBtnClicked(false);
     setListHeadlines("I Have:");
 
-    setBtnFoodStyle("rgba(228, 234, 228, 1)");
-    setBtnGroceryStyle("rgba(83, 105, 74, 1)");
+    setBtnFoodStyle("rgba(83, 105, 74, 1)");
+    setBtnGroceryStyle("rgba(228, 234, 228, 1)");
+    setTextColorGrocery("rgba(170, 188, 162, 1");
+    setTextColorHome("rgba(228, 234, 228, 1)");
   };
+
+  // entireFoodList.map((el) => {
+  //   for (let i = 0; i < 5; i++) {
+  //     el[0].foodtext + "5";
+  //   }
+  // });
+
+  // let newList = entireFoodList.map((el) => "1. " + el.foodtext);
+
+  let onlyGroceryList = dataFood.filter((el) => el.category !== "home");
+
+  let entireFoodList = onlyGroceryList.map((el, index) => {
+    let num = index + 1;
+    num = num.toString();
+
+    let text = num + ". " + el.foodtext;
+
+    return text;
+  });
+
+  // let newFood = "1. " + entireFoodList[1].foodtext;
+  // console.log("entireFoodList:", entireFoodList[1].foodtext);
+  console.log("entireFoodList index:", entireFoodList);
+  // console.log("newFood", newFood);
+  // console.log("newList", newList);
+
+  // let newEntireFoodList = JSON.stringify(
+  //   entireFoodList.map((el) => el.foodtext),
+  // );
+
+  let newEntireFoodList = JSON.stringify(entireFoodList);
+
+  const finalString = newEntireFoodList
+    .replace("[", "")
+
+    .replace("]", "")
+    .replace(/['"]/g, "")
+    .replace(/,/g, "\n");
+  // .replace(/( )/g, "\n");
+
+  console.log(finalString);
 
   return (
     <>
@@ -118,16 +178,16 @@ const InputFoodComponent = (props) => {
         <button
           onClick={displayGroceryList}
           className="chooseListBtn-wrapper__shoppingListBtn"
-          style={{ backgroundColor: btnGroceryStyle, color: btnFoodStyle }}
+          style={{ backgroundColor: btnGroceryStyle, color: textColorGrocery }}
         >
-          grocery list
+          to buy list
         </button>
         <button
           onClick={displayHomeList}
           className="chooseListBtn-wrapper__foodListBtn"
-          style={{ backgroundColor: btnFoodStyle, color: btnGroceryStyle }}
+          style={{ backgroundColor: btnFoodStyle, color: textColorHome }}
         >
-          home list
+          I have list
         </button>
       </div>
       <ListTopHeadlines listHeadlines={listHeadlines} />
@@ -222,6 +282,17 @@ const InputFoodComponent = (props) => {
           </button>
         </div>
       ) : null}
+      <CopyToClipboard text={finalString}>
+        <button className="handleListBtns-wrapper__clearGroceryList clearGroceryList">
+          copy "to buy" list to clipboard
+          <div className="clearGroceryList__circle-wrapper circle-wrapper">
+            <div className="circle-wrapper__circle circle">
+              <FontAwesomeIcon className="circle__copy" icon={faCopy} />
+              {/* <div className="circle__cross">+</div> */}
+            </div>
+          </div>
+        </button>
+      </CopyToClipboard>
     </>
   );
 };

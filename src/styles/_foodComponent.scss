@@ -54,6 +54,17 @@
         background-color: transparent;
         font: t.$descriptions-font;
         text-align: left;
+        color: c.$two;
+      }
+      &__text:focus {
+        width: 60vw;
+        border: none;
+
+        background-color: transparent;
+        font: t.$descriptions-font;
+        text-align: left;
+        color: c.$two;
+        outline: none;
       }
     }
     &__btn,
@@ -86,6 +97,15 @@
       position: absolute;
       transform: translateX(15vw);
       margin-bottom: 2vw;
+      margin-left: -20vw;
+    }
+    &__pictogram-milk {
+      // margin: 1vw 10vw 1vw 2vw;
+      width: 4.7vw;
+      position: absolute;
+      transform: translateX(15vw);
+      margin-bottom: 6vw;
+      margin-left: -30vw;
     }
   }
 }

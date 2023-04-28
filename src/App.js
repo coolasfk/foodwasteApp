@@ -1,11 +1,12 @@
 import React from "react";
 import "./index.scss";
 import "./App.scss";
+import { useState } from "react";
 import ZeroFoodwasteLogo from "./components/ZeroFoodwasteLogo";
 import InputFoodComponent from "./components/InputFoodComponent";
 import MenuTop from "./components/MenuTop";
+import "./Menu.scss";
 
-import { useState } from "react";
 import useGlobalReducer from "./components/useGlobalReducer";
 
 import FoodList from "./components/ListTopHeadlines";
@@ -15,6 +16,7 @@ function App() {
   const [state, dispatch] = useGlobalReducer();
   const [foodListComponents, setFoodListComponents] = useState([<FoodList />]);
   console.log("app.js state", state);
+
   return (
     <>
       <header className="header">
@@ -22,10 +24,6 @@ function App() {
         <ZeroFoodwasteLogo />
       </header>
       <main className="main">
-        {/* <div className="main__title-wrapper title-wrapper"> */}
-        {/* <h1 className="title-wrapper__title">Add food to your list</h1> */}
-        {/* <BtnAddFood setData={setData} data={data} /> */}
-
         <InputFoodComponent
           setData={setData}
           data={data}

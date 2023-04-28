@@ -8,10 +8,11 @@
   height: 20vw;
 
   &__shoppingListBtn {
-    
     width: 50vw;
     background-color: c.$one;
     color: c.$two;
+    background-color: c.$two;
+    color: c.$one;
     // border: 1vw solid c.$two;
     font: t.$descriptions-font;
     border: none;
@@ -26,7 +27,8 @@
     border: none;
     font: t.$descriptions-font;
     color: c.$one;
-
+    background-color: c.$one;
+    color: c.$three;
     border-bottom: c.$three 0.3vw solid;
     cursor: pointer;
   }

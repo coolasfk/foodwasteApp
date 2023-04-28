@@ -1,19 +1,16 @@
-import { Routes, Route } from react-router-dom;
+import { Link } from "react-router-dom";
 
 const MenuTop = () => {
-  const navigate = useNavigate();
+  console.log();
 
-  const openMenu = () => {
-    navigate("/Menu");
-  };
   return (
     <>
       <div className="header__menu-wrapper menu-wrapper">
-        <div onClick={openMenu} className="menu-wrapper__menu menu">
+        <Link className="menu-wrapper__menu menu" to="info">
           <div className="menu__menu-rectangle"> </div>
           <div className="menu__menu-rectangle"> </div>
           <div className="menu__menu-rectangle"> </div>
-        </div>
+        </Link>
       </div>
     </>
   );

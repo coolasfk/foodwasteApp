@@ -28,6 +28,20 @@ const InputFoodComponent = (props) => {
   const [textColorHome, setTextColorHome] = useState("rgba(170, 188, 162, 1");
   const [textColorGrocery, setTextColorGrocery] = useState("");
 
+  const changeOrderOfTheArray = (array) => {
+    let newArray = [];
+    for (let i = array.length - 1; i >= 0; i--) {
+      console.log("i", i);
+      console.log("array[i]", array[i]);
+
+      newArray.push(array[i]);
+    }
+
+    return newArray;
+  };
+
+  let foodDataStateDiffOrder = changeOrderOfTheArray(dataFood);
+
   useEffect(() => {
     localStorage.setItem("dataFood", JSON.stringify(dataFood));
   });
@@ -60,23 +74,28 @@ const InputFoodComponent = (props) => {
     }
 
     setFoodtext("");
+    // setDataFood(changeOrder(dataFood));
+    console.log("update", dataFood);
   };
 
-  const updateHomeList = () => {
-    let helpState = [...dataFood];
-    helpState.forEach((el) => (el.category = "home"));
+  // const updateHomeList = () => {
+  //   let helpState = [...dataFood];
+  //   helpState.forEach((el) => (el.category = "home"));
 
-    setDataFood([...helpState]);
-  };
+  // setDataFood([...helpState]);
+  // };
   const clearGroceryList = () => {
     setDataFood(dataFood.filter((el) => el.category !== "grocery"));
   };
 
-  const updateGroceryList = () => {
-    let helpFood = [...dataFood];
-    helpFood.forEach((el) => (el.category = "grocery"));
-    setDataFood([...helpFood]);
-  };
+  // const updateGroceryList = () => {
+  //   let helpFood = [...dataFood];
+  //   console.log("helpFood", helpFood);
+  //   let newHelpArray = changeOrder(helpFood);
+  //   console.log("newHelpArray", newHelpArray);
+  //   newHelpArray.forEach((el) => (el.category = "grocery"));
+  //   setDataFood([...newHelpArray]);
+  // };
 
   const clearFoodList = () => {
     setDataFood([]);
@@ -86,9 +105,6 @@ const InputFoodComponent = (props) => {
     setIsGroceryBtnClicked(true);
     setIsHomeListBtnClicked(false);
     setListHeadlines("To Buy:");
-
-    // setBtnGroceryStyle("rgba(228, 234, 228, 1)");
-    // setBtnFoodStyle("rgba(83, 105, 74, 1)");
 
     setTextColorHome("rgba(170, 188, 162, 1");
     setTextColorGrocery("rgba(228, 234, 228, 1)");
@@ -107,14 +123,6 @@ const InputFoodComponent = (props) => {
     setTextColorHome("rgba(228, 234, 228, 1)");
   };
 
-  // entireFoodList.map((el) => {
-  //   for (let i = 0; i < 5; i++) {
-  //     el[0].foodtext + "5";
-  //   }
-  // });
-
-  // let newList = entireFoodList.map((el) => "1. " + el.foodtext);
-
   let onlyGroceryList = dataFood.filter((el) => el.category !== "home");
 
   let entireFoodList = onlyGroceryList.map((el, index) => {
@@ -128,7 +136,7 @@ const InputFoodComponent = (props) => {
 
   // let newFood = "1. " + entireFoodList[1].foodtext;
   // console.log("entireFoodList:", entireFoodList[1].foodtext);
-  console.log("entireFoodList index:", entireFoodList);
+
   // console.log("newFood", newFood);
   // console.log("newList", newList);
 
@@ -144,7 +152,6 @@ const InputFoodComponent = (props) => {
     .replace("]", "")
     .replace(/['"]/g, "")
     .replace(/,/g, "\n");
-  // .replace(/( )/g, "\n");
 
   console.log(finalString);
 
@@ -159,6 +166,7 @@ const InputFoodComponent = (props) => {
               placeholder="add food to your list"
               autoComplete="on"
               value={foodtext}
+              maxLength="18"
               required
             />
 
@@ -192,7 +200,7 @@ const InputFoodComponent = (props) => {
       </div>
       <ListTopHeadlines listHeadlines={listHeadlines} />
 
-      {dataFood.map((obj) => {
+      {/* {dataFood.map((obj) => {
         if (isHomeListBtnClicked && obj.category === "home") {
           return (
             <FoodListComponent
@@ -222,13 +230,32 @@ const InputFoodComponent = (props) => {
         } else {
           return null;
         }
-      })}
+      })} */}
 
+      {foodDataStateDiffOrder
+
+        .filter(
+          (obj) =>
+            (isHomeListBtnClicked && obj.category === "home") ||
+            (isGroceryBtnClicked && obj.category === "grocery"),
+        )
+        .map((obj) => (
+          <FoodListComponent
+            foodtext={obj.foodtext}
+            key={obj.key}
+            id={obj.key}
+            setDataFood={setDataFood}
+            isHomeListBtnClicked={isHomeListBtnClicked}
+            dataFood={dataFood}
+            isGroceryBtnClicked={isGroceryBtnClicked}
+            category={obj.category}
+          />
+        ))}
       {isGroceryBtnClicked ? (
         <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
           <button
             className="handleListBtns-wrapper__btnAddToGroceryList"
-            onClick={updateGroceryList}
+            // onClick={updateGroceryList}
           >
             move to "I have list"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">
@@ -257,7 +284,7 @@ const InputFoodComponent = (props) => {
         <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
           <button
             className="handleListBtns-wrapper__btnAddToGroceryList"
-            onClick={updateHomeList}
+            // onClick={updateHomeList}
           >
             move to the "to buy list"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">

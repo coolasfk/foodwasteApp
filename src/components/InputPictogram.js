@@ -1,5 +1,6 @@
 import { ReactComponent as CheeseIcon } from "../assets/foodPictograms/cheese.svg";
 import { ReactComponent as Milk } from "../assets/foodPictograms/milk.svg";
+import { ReactComponent as Apple } from "../assets/foodPictograms/apple.svg";
 import React from "react";
 
 const InputPictogram = ({ foodtext }) => {
@@ -9,7 +10,10 @@ const InputPictogram = ({ foodtext }) => {
         <CheeseIcon className="background-Rectangle__pictogram" />
       ) : null}
       {foodtext === "milk" ? (
-        <Milk className="background-Rectangle__pictogram-milk" />
+        <Milk className="background-Rectangle__pictogram" />
+      ) : null}
+      {foodtext === "apple" ? (
+        <Apple className="background-Rectangle__pictogram" />
       ) : null}
     </>
   );

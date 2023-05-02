@@ -1,13 +1,9 @@
-import { useState } from "react";
-import useGlobalReducer from "./useGlobalReducer";
 import FoodComponentPictogram from "./FoodComponentPictogram";
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faShareFromSquare } from "@fortawesome/free-solid-svg-icons";
 
 const FoodListComponent = (props) => {
-  console.log("calling food list component", props);
-
   const removeTheComponent = () => {
     props.setDataFood(props.dataFood.filter((el) => el.key !== props.id));
   };
@@ -41,9 +37,9 @@ const FoodListComponent = (props) => {
               />
             </div>
           </button>
-          <h3 className="foodListElements-wrapper__text">{props.foodtext}</h3>
+          <div className="foodListElements-wrapper__textAndPictograms textAndPictograms">
+            <h3 className="textAndPictograms__text">{props.foodtext}</h3>
 
-          <div className="foodListElements-wrapper__pictogram">
             <FoodComponentPictogram {...props} />
           </div>
           <button

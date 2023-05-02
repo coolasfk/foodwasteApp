@@ -1,15 +1,21 @@
-@use "./colors" as c;
-@use "./fonts" as t;
+// @use "./colors" as c;
+// @use "./fonts" as t;
 
-foodListElements-wrapper,
-.foodListElements-wrapper {
-  &__pictogram-cheese {
-    width: 10vw;
-    margin-bottom: 0vw;
-  }
-  &__pictogram-milk {
-    width: 6vw;
-    margin-bottom: 2vw;
-    margin-left: 5vw;
-  }
-}
+// foodListElements-wrapperX,
+// .foodListElements-wrapperX {
+//   display: flex;
+//   align-items: center;
+//   height: 10vw;
+
+//   &__pictogram-cheese {
+//     width: 10vw;
+//     // margin-bottom: -6vw;
+//     // margin-bottom: -5vw;
+//   }
+//   &__pictogram-milk {
+//     width: 6vw;
+
+//     // margin-bottom: 2.5vw;
+//     // margin-left: 5vw;
+//   }
+// }

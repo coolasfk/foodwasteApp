@@ -40,22 +40,36 @@
       background-color: c.$one;
       text-align: center;
       height: 20vw;
-
-      &__text {
+      &__textAndPictograms,
+      .textAndPictograms {
         display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        &__text {
+          width: auto !important;
+          border: none;
 
-        width: auto !important;
-        border: none;
-
-        transform: translateX(-width/2);
-        color: c.$two;
-        font: t.$descriptions-font;
-        // text-align: center;
-      }
-      &__pictogram {
-        width: auto !important;
-        height: 10vw;
-        margin-left: 5vw;
+          // transform: translateX(-width/2);
+          color: c.$two;
+          font: t.$descriptions-font;
+          text-align: center;
+        }
+        &__pictogram {
+          width: auto !important;
+          height: 13vw;
+          margin-left: 5vw;
+        }
+        // &__pictogram-milk {
+        //   width: auto !important;
+        //   height: 12vw;
+        //   margin-left: 5vw;
+        // }
+        // &__pictogram-apple {
+        //   width: auto !important;
+        //   height: 12vw;
+        //   margin-left: 5vw;
+        // }
       }
     }
   }

@@ -7,15 +7,12 @@ import InputFoodComponent from "./components/InputFoodComponent";
 import MenuTop from "./components/MenuTop";
 import "./Menu.scss";
 
-import useGlobalReducer from "./components/useGlobalReducer";
-
 import FoodList from "./components/ListTopHeadlines";
 
 function App() {
   const [data, setData] = useState([]);
-  const [state, dispatch] = useGlobalReducer();
+
   const [foodListComponents, setFoodListComponents] = useState([<FoodList />]);
-  console.log("app.js state", state);
 
   return (
     <>

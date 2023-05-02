@@ -51,7 +51,7 @@ const InputFoodComponent = (props) => {
   };
 
   const updateLists = () => {
-    if (isGroceryBtnClicked === true) {
+    if (isGroceryBtnClicked === true && foodtext !== "") {
       setDataFood([
         ...dataFood,
         {
@@ -62,7 +62,7 @@ const InputFoodComponent = (props) => {
       ]);
     }
 
-    if (isHomeListBtnClicked === true) {
+    if (isHomeListBtnClicked === true && foodtext !== "") {
       setDataFood([
         ...dataFood,
         {
@@ -75,7 +75,6 @@ const InputFoodComponent = (props) => {
 
     setFoodtext("");
     // setDataFood(changeOrder(dataFood));
-    console.log("update", dataFood);
   };
 
   // const updateHomeList = () => {
@@ -122,6 +121,8 @@ const InputFoodComponent = (props) => {
     setTextColorGrocery("rgba(170, 188, 162, 1");
     setTextColorHome("rgba(228, 234, 228, 1)");
   };
+
+  //// functions to copy grocery list to clipboard
 
   let onlyGroceryList = dataFood.filter((el) => el.category !== "home");
 

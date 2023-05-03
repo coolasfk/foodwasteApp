@@ -83,25 +83,24 @@ const InputFoodComponent = (props) => {
 
   const updateHomeList = () => {
     let helpState = [...dataFood];
-    helpState.forEach((el) => (el.category = "home"));
+    console.log("helpState", helpState);
+    helpState.forEach((el) => (el.category = "grocery"));
 
-  setDataFood([...helpState]);
-  };
-  const clearGroceryList = () => {
-    setDataFood(dataFood.filter((el) => el.category !== "grocery"));
+    setDataFood([...helpState]);
   };
 
   const updateGroceryList = () => {
     let helpFood = [...dataFood];
     console.log("helpFood", helpFood);
-    let newHelpArray = changeOrder(helpFood);
-    console.log("newHelpArray", newHelpArray);
-    newHelpArray.forEach((el) => (el.category = "grocery"));
-    setDataFood([...newHelpArray]);
+    helpFood.forEach((el) => (el.category = "home"));
+    setDataFood([...helpFood]);
   };
 
+  const clearGroceryList = () => {
+    setDataFood(dataFood.filter((el) => el.category !== "grocery"));
+  };
   const clearFoodList = () => {
-    setDataFood([]);
+    setDataFood(dataFood.filter((el) => el.category !== "home"));
   };
 
   const displayGroceryList = () => {

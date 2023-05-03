@@ -5,7 +5,7 @@
 .chooseListBtn-wrapper {
   display: flex;
   width: 100vw;
-  height: 20vw;
+  height: 30vw;
 
   &__shoppingListBtn {
     width: 50vw;
@@ -16,11 +16,13 @@
     // border: 1vw solid c.$two;
     font: t.$descriptions-font;
     border: none;
-    border-bottom: c.$three 0.3vw solid;
+    // border-bottom: c.$three 1vw solid;
+    border-bottom: c.$three 0.01vw solid;
     cursor: pointer;
   }
   &__foodListBtn {
     width: 50vw;
+
     background-color: c.$two;
     // background-color: c.$three;
     // border: 1vw solid c.$two;
@@ -29,7 +31,8 @@
     color: c.$one;
     background-color: c.$one;
     color: c.$three;
-    border-bottom: c.$three 0.3vw solid;
+    // border-bottom: c.$three 1vw solid;
+    border-bottom: c.$three 0.01vw solid;
     cursor: pointer;
   }
 }

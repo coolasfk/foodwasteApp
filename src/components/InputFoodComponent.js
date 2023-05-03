@@ -25,8 +25,12 @@ const InputFoodComponent = (props) => {
   const [btnFoodStyle, setBtnFoodStyle] = useState("");
 
   const [foodtext, setFoodtext] = useState("");
-  const [textColorHome, setTextColorHome] = useState("rgba(170, 188, 162, 1");
   const [textColorGrocery, setTextColorGrocery] = useState("");
+  const [textColorHome, setTextColorHome] = useState("");
+  const [homeBorder, setHomeBorder] = useState("");
+  const [groceryBorder, setGroceryBorder] = useState(
+    "solid 2.2vw rgba(158, 158, 158, 1",
+  );
 
   const changeOrderOfTheArray = (array) => {
     let newArray = [];
@@ -109,6 +113,8 @@ const InputFoodComponent = (props) => {
     setTextColorGrocery("rgba(228, 234, 228, 1)");
     setBtnGroceryStyle("rgba(83, 105, 74, 1)");
     setBtnFoodStyle("rgba(228, 234, 228, 1)");
+    setHomeBorder("");
+    setGroceryBorder("solid 2.2vw rgba(158, 158, 158, 1");
   };
 
   const displayHomeList = () => {
@@ -120,6 +126,8 @@ const InputFoodComponent = (props) => {
     setBtnGroceryStyle("rgba(228, 234, 228, 1)");
     setTextColorGrocery("rgba(170, 188, 162, 1");
     setTextColorHome("rgba(228, 234, 228, 1)");
+    setHomeBorder("solid 2.2vw rgba(158, 158, 158, 1");
+    setGroceryBorder("");
   };
 
   //// functions to copy grocery list to clipboard
@@ -187,19 +195,27 @@ const InputFoodComponent = (props) => {
         <button
           onClick={displayGroceryList}
           className="chooseListBtn-wrapper__shoppingListBtn"
-          style={{ backgroundColor: btnGroceryStyle, color: textColorGrocery }}
+          style={{
+            backgroundColor: btnGroceryStyle,
+            color: textColorGrocery,
+            border: groceryBorder,
+          }}
         >
-          to buy list
+          To Buy:
         </button>
         <button
           onClick={displayHomeList}
           className="chooseListBtn-wrapper__foodListBtn"
-          style={{ backgroundColor: btnFoodStyle, color: textColorHome }}
+          style={{
+            backgroundColor: btnFoodStyle,
+            color: textColorHome,
+            border: homeBorder,
+          }}
         >
-          I have list
+          I Have:
         </button>
       </div>
-      <ListTopHeadlines listHeadlines={listHeadlines} />
+      {/* <ListTopHeadlines listHeadlines={listHeadlines} /> */}
 
       {/* {dataFood.map((obj) => {
         if (isHomeListBtnClicked && obj.category === "home") {
@@ -258,7 +274,7 @@ const InputFoodComponent = (props) => {
             className="handleListBtns-wrapper__btnAddToGroceryList"
             // onClick={updateGroceryList}
           >
-            move to "I have list"
+            move to "I Have"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">
               <div className="circle-wrapper__circle circle">
                 <FontAwesomeIcon
@@ -287,7 +303,7 @@ const InputFoodComponent = (props) => {
             className="handleListBtns-wrapper__btnAddToGroceryList"
             // onClick={updateHomeList}
           >
-            move to the "to buy list"
+            move to "To Buy"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">
               <div className="circle-wrapper__circle circle">
                 <FontAwesomeIcon
@@ -312,7 +328,7 @@ const InputFoodComponent = (props) => {
       ) : null}
       <CopyToClipboard text={finalString}>
         <button className="handleListBtns-wrapper__clearGroceryList clearGroceryList">
-          copy "to buy" list to clipboard
+          copy "to buy" to clipboard
           <div className="clearGroceryList__circle-wrapper circle-wrapper">
             <div className="circle-wrapper__circle circle">
               <FontAwesomeIcon className="circle__copy" icon={faCopy} />

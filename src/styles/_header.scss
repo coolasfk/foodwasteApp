@@ -38,7 +38,7 @@ header {
   &__logo-wrapper,
   .logo-wrapper {
     width: 100vw;
-    height: 15vh;
+    height: 22vh;
 
     display: flex;
     align-items: center;
@@ -47,8 +47,8 @@ header {
     background-color: c.$one;
 
     &__logo {
-      width: 50vw;
-      margin: 5vw 20vw 5vw 20vw;
+      width: 74vw;
+      margin: 30vw 12vw 30vw 12vw;
     }
   }
 }

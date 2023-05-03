@@ -19,9 +19,9 @@
     font: t.$descriptions-font;
     background-color: c.$three;
     color: c.$two;
-    border-bottom: c.$three 0.3vw solid;
+    border-bottom: c.$one 0.3vw solid;
 
-    border-right: c.$three 0.3vw solid;
+    // border-right: c.$three 0.3vw solid;
 
     display: flex;
     align-items: center;
@@ -30,7 +30,7 @@
   &__clearGroceryList,
   .clearGroceryList {
     width: 100vw;
-    height: 20vw;
+    height: 22vw;
     // background-color: c.$one;
     // border: 1vw solid c.$two;
     border: none;
@@ -38,7 +38,7 @@
     color: c.$two;
 
     border-bottom: c.$one 0.3vw solid;
-    border-top: c.$one 0.3vw solid;
+    // border-top: c.$one 0.3vw solid;
     display: flex;
     flex-direction: row;
 

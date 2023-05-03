@@ -15,13 +15,16 @@
     border-bottom: c.$three 0.3vw solid;
     &__headline {
       color: c.$two;
-      color: rgb(110, 97, 77);
+
       color: c.$four;
 
-      font: t.$two;
+      font: t.$descriptions-font;
       color: c.$two;
-      margin: 10vw 15vw 10vw 15vw;
+      color: rgb(184, 184, 184);
+      // margin: 10vw 15vw 10vw 15vw;
       text-align: center;
+      // font: t.$five;
+      font-size: 2rem;
     }
   }
   &__foodList,
@@ -39,7 +42,7 @@
       align-items: center;
       background-color: c.$one;
       text-align: center;
-      height: 20vw;
+      height: 22vw;
       &__textAndPictograms,
       .textAndPictograms {
         display: flex;

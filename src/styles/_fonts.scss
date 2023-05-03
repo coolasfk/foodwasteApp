@@ -1,13 +1,20 @@
+@font-face {
+  font-family: "Feruka";
+  // src: url("CustomFont.eot");
+  src: url("../assets/fonts/Feruka.otf") format("otf");
+}
+
 $headline-font: 700 normal 3rem "program", "helvetica";
 $h3-font: 700 normal 2rem "program", "helvetica";
 $h3-font-smaller: 300 normal 1.6rem "program", "helvetica";
 
 $p-font: 300 normal 1.5rem "program", "sans-serif";
-$descriptions-font: 500 normal 1.4rem "bryant-web", "helvetica";
+$descriptions-font: 500 normal 1.3rem "bryant-web", "helvetica";
 
-$descriptions-font-small: 500 normal 0.7rem "bryant-web", "helvetica";
+$descriptions-font-small: 500 normal 0.5rem "bryant-web", "helvetica";
 $fun-font: 400 normal 3rem "gelato-luxe", "comic-sans";
 $one: 600 italic 2.2rem "miller-display", serif;
-$two: 700 normal 2.2rem "miller-display", serif;
+$two: 700 normal 2rem "miller-display", serif;
 $three: 500 normal 2.3rem "program", sans-serif;
 $four: 900 normal 2.3rem "program", sans-serif;
+$five: 500 "Feruka" 3rem, serif;

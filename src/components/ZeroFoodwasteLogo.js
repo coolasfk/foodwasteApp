@@ -1,6 +1,6 @@
 import React from "react";
 
-import { ReactComponent as LogoZeroWaste } from "../../src/assets/zero_foodwaste_logo.svg";
+import { ReactComponent as LogoZeroWaste } from "../../src/assets/zero_foodwaste_logo_1.svg";
 
 const ZeroFoodwasteLogo = () => {
   return (

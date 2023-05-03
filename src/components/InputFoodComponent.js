@@ -81,24 +81,24 @@ const InputFoodComponent = (props) => {
     // setDataFood(changeOrder(dataFood));
   };
 
-  // const updateHomeList = () => {
-  //   let helpState = [...dataFood];
-  //   helpState.forEach((el) => (el.category = "home"));
+  const updateHomeList = () => {
+    let helpState = [...dataFood];
+    helpState.forEach((el) => (el.category = "home"));
 
-  // setDataFood([...helpState]);
-  // };
+  setDataFood([...helpState]);
+  };
   const clearGroceryList = () => {
     setDataFood(dataFood.filter((el) => el.category !== "grocery"));
   };
 
-  // const updateGroceryList = () => {
-  //   let helpFood = [...dataFood];
-  //   console.log("helpFood", helpFood);
-  //   let newHelpArray = changeOrder(helpFood);
-  //   console.log("newHelpArray", newHelpArray);
-  //   newHelpArray.forEach((el) => (el.category = "grocery"));
-  //   setDataFood([...newHelpArray]);
-  // };
+  const updateGroceryList = () => {
+    let helpFood = [...dataFood];
+    console.log("helpFood", helpFood);
+    let newHelpArray = changeOrder(helpFood);
+    console.log("newHelpArray", newHelpArray);
+    newHelpArray.forEach((el) => (el.category = "grocery"));
+    setDataFood([...newHelpArray]);
+  };
 
   const clearFoodList = () => {
     setDataFood([]);
@@ -272,7 +272,7 @@ const InputFoodComponent = (props) => {
         <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
           <button
             className="handleListBtns-wrapper__btnAddToGroceryList"
-            // onClick={updateGroceryList}
+            onClick={updateGroceryList}
           >
             move to "I Have"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">
@@ -301,7 +301,7 @@ const InputFoodComponent = (props) => {
         <div className="main__handleListBtns-wrapper handleListBtns-wrapper">
           <button
             className="handleListBtns-wrapper__btnAddToGroceryList"
-            // onClick={updateHomeList}
+            onClick={updateHomeList}
           >
             move to "To Buy"
             <div className="clearGroceryList__circle-wrapper circle-wrapper">

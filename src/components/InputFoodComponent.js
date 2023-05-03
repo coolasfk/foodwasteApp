@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import ListTopHeadlines from "./ListTopHeadlines";
+
 import CopyToClipboard from "react-copy-to-clipboard";
 
 import { v4 as uuidv4 } from "uuid";
@@ -20,7 +20,7 @@ const InputFoodComponent = (props) => {
 
   const [isGroceryBtnClicked, setIsGroceryBtnClicked] = useState(true);
   const [isHomeListBtnClicked, setIsHomeListBtnClicked] = useState(false);
-  const [listHeadlines, setListHeadlines] = useState("To Buy:");
+  // const [listHeadlines, setListHeadlines] = useState("To Buy:");
   const [btnGroceryStyle, setBtnGroceryStyle] = useState("");
   const [btnFoodStyle, setBtnFoodStyle] = useState("");
 

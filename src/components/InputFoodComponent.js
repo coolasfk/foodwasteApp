@@ -107,7 +107,7 @@ const InputFoodComponent = (props) => {
   const displayGroceryList = () => {
     setIsGroceryBtnClicked(true);
     setIsHomeListBtnClicked(false);
-    setListHeadlines("To Buy:");
+    // setListHeadlines("To Buy:");
 
     setTextColorHome("rgba(170, 188, 162, 1");
     setTextColorGrocery("rgba(228, 234, 228, 1)");
@@ -120,7 +120,7 @@ const InputFoodComponent = (props) => {
   const displayHomeList = () => {
     setIsHomeListBtnClicked(true);
     setIsGroceryBtnClicked(false);
-    setListHeadlines("I Have:");
+    // setListHeadlines("I Have:");
 
     setBtnFoodStyle("rgba(83, 105, 74, 1)");
     setBtnGroceryStyle("rgba(228, 234, 228, 1)");
